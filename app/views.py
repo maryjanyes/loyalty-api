@@ -25,7 +25,7 @@ def root_view(request):
 @csrf_exempt
 def customer_balance(request):
 
-    if not (request.session or request.session['auth_key']):
+    if not request.session.get('auth_key'):
         return HttpResponse('Access denied: provide `session_key`')
 
     if request.method == "POST":
@@ -59,6 +59,10 @@ def customer_balance(request):
         return HttpResponse(customer.points)
 
 def save_customer(request):
+
+    if not request.session.get('auth_key'):
+        return HttpResponse('Access denied: provide `session_key`')
+
     name = request.GET['name']
     family_name = request.GET['family_name']
     email = request.GET['email']
