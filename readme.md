@@ -18,6 +18,8 @@
 :/POST </br>
 (create customer balance tx) </br>
 <root>/customer/balance/?customer_id=<customer_id>&is_accrual=<is_accrual_tx>&count=<count_to_be_changed>
+- you can got next result:
+<img src="./tx-response-example.png" alt="tx response" />
 
 ### pre-install
 - `pip install -r requirements.txt`
@@ -29,7 +31,7 @@ run clickhouse! </br>
 (or use Docker container)
 
 ### run
-- python manage.py runserver
+- `python manage.py runserver`
 - separate processes: </br>
 `python -m celery -A balance worker -l info --pool=solo` </br>
 `python -m celery -A balance beat -l info` </br>
