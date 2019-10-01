@@ -36,8 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.conf',
-    'app',
-    'balance'
+    'balance',
+    'app'
 ]
 
 # Celery

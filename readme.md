@@ -1,30 +1,44 @@
 ### loyalty app: API
 
-### docs (~requests~)
+### docs (requests)
 
 - auth
-/GET
+:/GET
 <root>/?password=<password>&username=<username>&email=<email>
 
-- customer
-/POST
+- customer </br>
+:/POST </br>
 <root>/customer/?name=<name>&family_name=<family_name>&email=<email>
 
-- balance
-/GET
-(retrieve balance by `customer_id`)
+- balance </br>
+:/GET </br>
+(retrieve balance by `customer_id`) </br>
 <root>/customer/balance/?customer_id=<customer_id>
-/POST
-(create customer balance tx)
+</br>
+:/POST </br>
+(create customer balance tx) </br>
 <root>/customer/balance/?customer_id=<customer_id>&is_accrual=<is_accrual_tx>&count=<count_to_be_changed>
 
 ### pre-install
 pip install -r requirements.txt
+python -m ./balance/clickhouse.py True
+
+### services
+run redis!
+run clickhouse!
+(or use Docker container)
 
 ### run
-python manage.py runserver
+- python manage.py runserver
+- separate processes: </br>
+`python -m celery -A balance worker -l info --pool=solo`
+`python -m celery -A balance beat -l info`
+(you can use `options` if you feel with)
 
-- you can use <options> if you feel with
+### db
+(credentials)
+- initial login: `admin`
+- initial password: `0000`
 
 ### comments
 (REQUIRED)

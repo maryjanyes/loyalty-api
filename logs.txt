@@ -459,3 +459,6 @@
 [2019-10-01 11:22:00,753: WARNING/MainProcess] msg = msg % self.args
 [2019-10-01 11:22:00,757: WARNING/MainProcess] UnicodeDecodeError: 'ascii' codec can't decode byte 0xcf in position 14: ordinal not in range(128)
 [2019-10-01 11:22:00,765: WARNING/MainProcess] Logged from file consumer.py, line 425
+[2019-10-01 19:58:10,573: INFO/MainProcess] beat: Starting...
+[2019-10-01 20:01:01,467: INFO/MainProcess] Scheduler: Sending due task check_balance_and_writing_to_db (check_balance_and_writing_to_db)
+[2019-10-01 20:18:29,668: INFO/MainProcess] beat: Starting...
