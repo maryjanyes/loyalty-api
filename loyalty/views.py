@@ -4,12 +4,17 @@ from django.contrib.auth import authenticate
 
 def auth(request):
 
+    auth_key = request.session.get('auth_key')
+
     if 'logout' in request.GET:
-        request.session['auth_key'] = None
-        return HttpResponse('Since logout successfully.')
+
+        if not auth_key:
+            return HttpResponse('You are already outside!')
+        else:
+            request.session['auth_key'] = None
+            return HttpResponse('Logout success.')
 
     else:
-        auth_key = request.session.get('auth_key', None)
 
         if not auth_key:
             username = request.GET['username']
